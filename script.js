@@ -7,9 +7,22 @@ function loadInitWebpage() {
       return response.json();
     })
     .then(function(json) {
-      console.log(json);
+      let card = document.createElement("div");
+      card.setAttribute("class","gameCards");
+      let data = json.results
+      console.log(data.length);
+      for (let index = 0; index < data.length; index ++) {
+        loadGameCard(card, data[index]["name"], data[index]["rating"], data[index]["released"],data[index]["background_image"])  
+      }
+      $(".videoGamesContainer").append(card);
     })
     // $(".videoGamesContainer").
+}
+function loadGameCard(cardDiv, name, rating, releaseDate,bgImg) {
+  
+  $(".gameCards").append($(`<div class = "gameImgContainer"><img class = "gameImages" src = ${bgImg}></div>`));
+  $(".gameCards").append($(`<div><p>${name} has a rating of ${rating}<br>Release Date: ${releaseDate}</p></div>`));
+  
 }
 
 loadInitWebpage();

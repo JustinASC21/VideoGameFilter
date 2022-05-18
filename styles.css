@@ -1,0 +1,17 @@
+.gameImages {
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+}
+.gameImgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gameCards {
+  height:100%;
+  display: flex;
+justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
