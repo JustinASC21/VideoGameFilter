@@ -9,9 +9,13 @@
   align-items: center;
 }
 .gameCards {
-  height:100%;
   display: flex;
 justify-content: center;
+  width: 500px;
+  border: red solid 2px;
+}
+.videoGamesContainer {
+  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
