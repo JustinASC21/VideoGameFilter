@@ -9,22 +9,31 @@ function loadInitWebpage() {
     .then(function(json) {
       
       let data = json.results
-      console.log(data);
       for (let index = 0; index < data.length; index ++) {
-        loadGameCard(data[index]["name"], data[index]["rating"], data[index]["released"],data[index]["background_image"])  
+        loadGameCard(data[index]["name"], data[index]["rating"], data[index]["released"],data[index]["background_image"],data[index]["genres"])  
       }
       
     })
     // $(".videoGamesContainer").
 }
-function loadGameCard(name, rating, releaseDate,bgImg) {
-  let cardDiv = `<div class = "gameCards"><div class = "gameImgContainer"><img class = "gameImages" src = ${bgImg}></div><div><p>${name} has a rating of ${rating}<br>Release Date: ${releaseDate}</p></div></div>`;
+function loadGameCard(name, rating, releaseDate,bgImg,genreArray) {
+  let genreString = "Genres: ";
+  for (let n = 0; n < genreArray.length; n ++) {
+    if (n + 1 == genreArray.length) {
+      // last genre
+      genreString = genreString + genreArray[n]["name"];
+    }
+    else {
+       genreString += genreArray[n]["name"] + ", ";
+    }
+  }
+  let cardDiv = `<div class = "gameCards"><div class = "gameImgContainer"><img class = "gameImages" src = ${bgImg}></div><div class = "descriptions"><p>${name} has a rating of ${rating}<br>Release Date: ${releaseDate}<br>${genreString}</p></div></div>`;
   $(".videoGamesContainer").append(cardDiv);
 }
 
 $(".search").click(function() {
   $(".videoGamesContainer").empty();
-  let input = $("input").val();
+  let input = $(".searchInput").val();
   let newAPICall = apiURL + "&search=" + input;
   fetch(newAPICall)
   .then(function(response) {
@@ -32,9 +41,8 @@ $(".search").click(function() {
   })
   .then(function(json) {
     let data = json.results;
-    console.log(data);
     for (let ind = 0; ind < data.length; ind ++) {
-      loadGameCard(data[ind]["name"],data[ind]["rating"],data[ind]["released"],data[ind]["background_image"]);
+      loadGameCard(data[ind]["name"],data[ind]["rating"],data[ind]["released"],data[ind]["background_image"],data[ind]["genres"]);
     }
   })
 })
