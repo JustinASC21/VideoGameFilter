@@ -3,6 +3,10 @@
   height: 100px;
   border-radius: 100%;
 }
+.gameImages:hover {
+  border: blue dashed 4px;
+  cursor: pointer;
+}
 .gameImgContainer {
   display: flex;
   justify-content: center;
@@ -11,6 +15,15 @@
 .gameCards {
 /* justify-content: center; */
   width: 500px;
+}
+.gameCards:hover {
+  border-radius:15%;
+  border: double 8px transparent;
+  border-radius: 80px;
+  background-image: linear-gradient(transparent, transparent), radial-gradient(circle at top right, cyan,lightgreen), radial-gradient(circle at bottom right, lightgreen, blue), radial-gradient(circle at bottom left, blue, white) , radial-gradient(circle at top left, white,cyan);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  animation: background infinite 4s;
 }
 .videoGamesContainer {
   padding-top: 5%;
@@ -25,6 +38,10 @@ justify-content: center;
 }
 .searchInput {
 border-radius: 25%;
+  margin-right: 15px;
+  font-family: cursive;
+  font-size: 18px;
+  text-align: center;
 }
 .search {
   border-radius: 25%;
@@ -43,6 +60,10 @@ border-radius: 25%;
   margin-top: 0%;
   padding: 2%;
 }
+.userInputs {
+  text-align: center;
+}
+
 .header {
 /*   margin-top: -1%; */
   background-color: #5454c5;
@@ -50,6 +71,18 @@ border-radius: 25%;
   border-bottom-right-radius: 10%;
   
 }
+.genreSelect {
+  font-family: Cursive;
+  font-size: 18px;
+  border-radius: 25%;
+  text-align: center;
+}
 body {
   background-color: #639cd9;
+}
+@keyframes background
+{
+  33% {border: white solid 8px;}
+  66% { border: lightgreen solid 8px;}
+  99% { border: white solid 8px;}
 }
